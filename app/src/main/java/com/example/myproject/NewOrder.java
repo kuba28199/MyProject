@@ -20,6 +20,7 @@ import com.example.myproject.databinding.ActivityNewOrderBinding;
 public class NewOrder extends AppCompatActivity {
 
     private ActivityNewOrderBinding binding;
+    public static final String RESULT_DATA = "result";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +39,10 @@ public class NewOrder extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String mess = "dziala!!";
                 Intent i = new Intent();
-                i.putExtra("messege", "messege");
-                setResult(123, i);
+                i.putExtra(RESULT_DATA, mess);
+                setResult(RESULT_OK, i);
                 finish();
             }
         });
