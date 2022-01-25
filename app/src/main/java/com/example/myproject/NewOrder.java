@@ -7,19 +7,30 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myproject.ui.main.SectionsPagerAdapter;
 import com.example.myproject.databinding.ActivityNewOrderBinding;
 
+import java.util.List;
+
 public class NewOrder extends AppCompatActivity {
 
     private ActivityNewOrderBinding binding;
+    //private ProduktViewModel produktViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,7 @@ public class NewOrder extends AppCompatActivity {
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab;
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
