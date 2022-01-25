@@ -38,10 +38,17 @@ public class NewOrder extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent();
-                i.putExtra("messege", "messege");
-                setResult(123, i);
-                finish();
+                Snackbar confirm = Snackbar.make(findViewById(R.id.constraintLayout), "Potwierdź zamówienie?", Snackbar.LENGTH_LONG);
+                confirm.setAction("Potwierdź", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent();
+                        i.putExtra("messege", "messege");
+                        setResult(123, i);
+                        finish();
+                    }
+                });
+                confirm.show();
             }
         });
     }
