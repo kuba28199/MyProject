@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_jedzenie"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".JedzenieActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skomponuj własny zestaw:"
+        android:textSize="20dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/zestaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wybierz rodzaj jedzenia:"/>
+
+    <Spinner
+        android:id="@+id/rodzaj_jedzenia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/rodzaje_jedzenia" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wybierz frytki:" />
+
+    <Spinner
+        android:id="@+id/rodzaj_frytek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/rodzaje_frytek" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wybierz napój:" />
+
+    <Spinner
+        android:id="@+id/rodzaj_napoju"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/rodzaje_napojów" />
+
+    <Button
+        android:id="@+id/stworz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="10dp"
+        android:text="Stwórz" />
+
+    <Button
+        android:id="@+id/buttonZobaczKoszyk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="21dp"
+        android:text="Koszyk" />
+
+    <Button
+        android:id="@+id/buttonDodajDoKoszyka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="21dp"
+        android:text="Dodaj do koszyka" />
+
+
+</LinearLayout>
