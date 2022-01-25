@@ -29,17 +29,14 @@ public class JedzenieActivity extends Fragment {
 
     Spinner rodzajJedzenia, rodzajFrytek, rodzajNapoju;
     Button stworz, DodajDoKoszyka, ZobaczKoszyk;
-    TextView zestaw;
+    TextView nowyzestaw;
     String nazwa = "Własny zestaw";
     String opis = "opis";
     float cena = 5;
-
+    View view;
     private FragmentNewOrderBinding binding;;
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    private PageViewModel pageViewModel;
-    //private FragmentNewOrderBinding binding;
-    private ProduktViewModel produktViewModel;
 
     public static JedzenieActivity newInstance(int index) {
         JedzenieActivity fragment = new JedzenieActivity();
@@ -54,9 +51,132 @@ public class JedzenieActivity extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
-        return inflater.inflate(R.layout.activity_jedzenie, container,false);
+        view = inflater.inflate(R.layout.activity_jedzenie, container,false);
+        addListenerOnButtonStworz();
+        return view;
     }
 
+    public void addListenerOnButtonStworz(){
+
+        rodzajJedzenia = (Spinner) view.findViewById(R.id.rodzaj_jedzenia);
+        rodzajFrytek = (Spinner) view.findViewById(R.id.rodzaj_frytek);
+        rodzajNapoju = (Spinner) view.findViewById(R.id.rodzaj_napoju);
+
+        stworz = (Button) view.findViewById(R.id.stworz);
+        nowyzestaw = (TextView) view.findViewById(R.id.zestaw);
+
+        stworz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stworz = (Button) view.findViewById(R.id.stworz);
+                String jedzenie = String.valueOf(rodzajJedzenia.getSelectedItem());
+                String frytki = String.valueOf(rodzajFrytek.getSelectedItem());
+                String napój = String.valueOf(rodzajNapoju.getSelectedItem());
+
+                //Z burgerem
+                Jedzenie zestaw = new Burger();
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new Burger(); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new MałeFrytki(new Burger()); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new ŚrednieFrytki(new Burger()); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new DużeFrytki(new Burger()); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new Burger()); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new Burger()); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new Burger()); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new MałeFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new MałeFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new MałeFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new ŚrednieFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new ŚrednieFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new ŚrednieFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new DużeFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new DużeFrytki(new Burger())); }
+
+                if(jedzenie.compareTo("Burger")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new DużeFrytki(new Burger())); }
+
+
+
+                //Z kanapką
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new Kanapka(); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new MałeFrytki(new Kanapka()); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new ŚrednieFrytki(new Kanapka()); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Brak")==0){
+                    zestaw = new DużeFrytki(new Kanapka()); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new Kanapka()); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new Kanapka()); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Brak")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new Kanapka()); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new MałeFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new MałeFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Małe")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new MałeFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new ŚrednieFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new ŚrednieFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Średnie")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new ŚrednieFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Woda")==0){
+                    zestaw = new Woda(new DużeFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Napój gazowany")==0){
+                    zestaw = new NapójGazowany(new DużeFrytki(new Kanapka())); }
+
+                if(jedzenie.compareTo("Kanapka")==0 && frytki.compareTo("Duże")==0 && napój.compareTo("Sok")==0){
+                    zestaw = new Sok(new DużeFrytki(new Kanapka())); }
+
+                nowyzestaw.setText("Twój zestaw" + "\nSklad: " + zestaw.Opis() + "\nCena: " + zestaw.Cena() + "zł");
+            }
+        });
+    }
 }
 
