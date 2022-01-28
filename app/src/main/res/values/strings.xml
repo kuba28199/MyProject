@@ -10,6 +10,27 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_new_order">NewOrder</string>
+
     <string name="tab_text_1">Produkty</string>
     <string name="tab_text_2">Twój własny zestaw</string>
+
+    <string-array name="rodzaje_jedzenia">
+        <item>Burger</item>
+        <item>Kanapka</item>
+    </string-array>
+
+    <string-array name="rodzaje_frytek">
+        <item>Brak</item>
+        <item>Małe</item>
+        <item>Średnie</item>
+        <item>Duże</item>
+    </string-array>
+
+    <string-array name="rodzaje_napojów">
+        <item>Brak</item>
+        <item>Woda</item>
+        <item>Napój gazowany</item>
+        <item>Sok</item>
+    </string-array>
+
 </resources>
