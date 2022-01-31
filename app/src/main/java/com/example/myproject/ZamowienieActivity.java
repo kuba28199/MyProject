@@ -36,7 +36,7 @@ public class ZamowienieActivity extends Fragment {
         //FloatingActionButton fab = binding.fab;
         //binding = FragmentNewOrderBinding.inflate(inflater, container, false);
 //        View root = binding.getRoot();
-        view = inflater.inflate(R.layout.fragment_new_order, container, false);
+        view = inflater.inflate(R.layout.fragment_new_order2, container, false);
         editTextTextPersonName2 = (EditText) view.findViewById(R.id.editTextTextPersonName2);
         editTextTextPersonName3 = (EditText) view.findViewById(R.id.editTextTextPersonName3);
         editTextTextPersonName4 = (EditText) view.findViewById(R.id.editTextTextPersonName4);
@@ -54,8 +54,7 @@ public class ZamowienieActivity extends Fragment {
                 zamowienie.Produkty = new ArrayList<String>();
                 zamowienie.Produkty.add(numer);
 
-
-                Toast.makeText(view.getContext(), R.string.zamowiono, Toast.LENGTH_LONG ).show();
+                Toast.makeText(view.getContext(), R.string.zamowiono, Toast.LENGTH_LONG).show();
 
             }
         });

@@ -13,6 +13,14 @@ public class Produkt implements Serializable {
     private float cena;
     private String opis;
 
+    public Produkt(){ }
+
+    public Produkt(String nazwa, float cena, String opis) {
+        this.nazwa = nazwa;
+        this.cena = cena;
+        this.opis = opis;
+    }
+
     public int getId() {
         return id;
     }

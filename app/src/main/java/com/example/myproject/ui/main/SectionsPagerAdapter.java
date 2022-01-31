@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.myproject.JedzenieActivity;
+import com.example.myproject.MainActivity;
 import com.example.myproject.R;
 import com.example.myproject.SecondFragment;
 import com.example.myproject.ZamowienieActivity;
@@ -19,7 +21,7 @@ import com.example.myproject.ZamowienieActivity;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_1};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -29,15 +31,17 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        if (position == 2){
-        //return PlaceholderFragment.newInstance(position + 1);}
-            Fragment fragment = new ZamowienieActivity();
-            return fragment;}
 
-        Fragment fragment = new SecondFragment();
-        return fragment;
+         //getItem is called to instantiate the fragment for the given page.
+        if(position == 0)
+        {
+            return PlaceholderFragment.newInstance(position + 1);
+        }
+        else if(position == 2){
+            Fragment fragment = new ZamowienieActivity();
+            return fragment;
+        }
+        return JedzenieActivity.newInstance(position + 1);
     }
 
     @Nullable
