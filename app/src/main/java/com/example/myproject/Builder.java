@@ -1,7 +1,7 @@
 package com.example.myproject;
 
 public class Builder implements BuilderInterface {
-    BuilderZamowienie Zamowienie = new BuilderZamowienie();
+    Zamowienie Zamowienie = new Zamowienie();
 
     @Override
     public BuilderInterface setImie(String imie) {
@@ -16,13 +16,13 @@ public class Builder implements BuilderInterface {
     }
 
     @Override
-    public BuilderInterface setNumer(int numer) {
+    public BuilderInterface setNumer(String numer) {
         Zamowienie.numer = numer;
         return this;
     }
 
     @Override
-    public BuilderZamowienie build() {
+    public Zamowienie build() {
         return Zamowienie;
     }
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.example.myproject.Produkt;
 import com.example.myproject.ProduktViewModel;
 import com.example.myproject.R;
 import com.example.myproject.databinding.FragmentNewOrderBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -89,16 +91,40 @@ public class PlaceholderFragment extends Fragment {
     private class ProductHolder extends RecyclerView.ViewHolder{
         private TextView productNameTextView;
         private TextView productPriceTextView;
+        //private TextView productOpisTextView;
+        //private Button addButton;
 
         public ProductHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.product_list_item, parent, false));
+            View view = inflater.inflate(R.layout.product_list_item, parent, false);
             productNameTextView = itemView.findViewById(R.id.product_name);
             productPriceTextView = itemView.findViewById(R.id.product_price);
+           // productOpisTextView = itemView.findViewById(R.id.product_opis);
+            //addButton = itemView.findViewById(R.id.buttonDoKoszyka);
+            /*itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(itemView.findViewById(R.id.card_view),getString(productNameTextView), Snackbar.LENGTH_LONG).show();
+                }
+            });*/
+            /*addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //dodaj do koszyka
+                }
+            });*/
         }
 
         public void bind(Produkt produkt){
             productNameTextView.setText(produkt.getNazwa());
-            productPriceTextView.setText(Float.toString(produkt.getCena()));
+            productPriceTextView.setText(Float.toString(produkt.getCena()) + "zł");
+           // productOpisTextView.setText(produkt.getOpis());
+            /*itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(itemView.findViewById(R.id.card_view),getText(produkt.getOpis()), Snackbar.LENGTH_LONG).show();
+                }
+            });*/
         }
     }
 
