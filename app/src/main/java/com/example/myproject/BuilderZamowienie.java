@@ -3,7 +3,7 @@ package com.example.myproject;
 public class BuilderZamowienie {
     public String imie;
     public String nazwisko;
-    public int numer;
+    public String numer;
 
-    BuilderZamowienie Zamowienie = new Builder().setImie("Hello").setNazwisko("World").setNumer(1).build();
+    BuilderZamowienie Zamowienie = new Builder().setImie("Hello").setNazwisko("World").setNumer("1").build();
 }
