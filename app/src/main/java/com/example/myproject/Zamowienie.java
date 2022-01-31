@@ -3,24 +3,52 @@ package com.example.myproject;
 import java.util.ArrayList;
 import java.lang.String;
 
-public class Zamowienie {
-    private Stan status;
-    private ArrayList<Produkt> zamowienie;
-    private String id;
 
-    public String getId(){return id;}
+//budowanie zamówienia używając buildera
+//Zamowienie zamowienie = new Builder().setImie(imie).setNazwisko(nazwisko).setNumer(numer).build();
+
+public class Zamowienie {
+    private Stan status = new Przyjęte();
+    private ArrayList<Produkt> zamowienie;
+    private String imie;
+    private String nazwisko;
+    private String numer;
+
     public ArrayList<Produkt> getZamowienie(){return zamowienie;}
 
-    public void setId(String id){this.id=id;}
-    public void setId(int id){this.id= String.valueOf(id);}
+    public String getIdentifier(){
+        if (imie != null){
+            return imie;
+        }else
+            if(nazwisko != null){
+                return nazwisko;
+            }else
+                if(numer != null){
+                    return numer;
+                }
+        return null;
+    }
 
     public void addProduct(Produkt product){zamowienie.add(product);}
 
-    public void zmienStatus(Stan nowy_status){status = nowy_status;}
+    public void zmienStatus(){
+        if (status.equals(new Przyjęte())){
+            status = new Przygotowywane();
+        }else
+            if (status.equals(new Przygotowywane())){
+                status = new Gotowe();
+            }
+    }
+
+    public String getStatus(){
+        return status.getStatus();
+    }
 }
 
 class Stan{
     private String status;
+
+    public String getStatus(){return status;}
 }
 
 class Przyjęte extends Stan{

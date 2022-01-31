@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.Produkt;
+import com.example.myproject.Zamowienie;
 import com.example.myproject.ProduktViewModel;
 import com.example.myproject.R;
 import com.example.myproject.databinding.FragmentNewOrderBinding;
@@ -99,6 +100,22 @@ public class PlaceholderFragment extends Fragment {
         public void bind(Produkt produkt){
             productNameTextView.setText(produkt.getNazwa());
             productPriceTextView.setText(Float.toString(produkt.getCena()));
+        }
+    }
+
+    private class OrderHolder extends RecyclerView.ViewHolder{
+        private TextView orderNameTextView;
+        private TextView orderStatusTextView;
+
+        public OrderHolder(LayoutInflater inflater, ViewGroup parent){
+            super(inflater.inflate(R.layout.order_list_item, parent, false));
+            orderNameTextView = itemView.findViewById(R.id.order_name);
+            orderStatusTextView = itemView.findViewById(R.id.order_status);
+        }
+
+        public void bind(Zamowienie order){
+            orderNameTextView.setText(order.getIdentifier());
+            orderStatusTextView.setText(order.getStatus());
         }
     }
 
