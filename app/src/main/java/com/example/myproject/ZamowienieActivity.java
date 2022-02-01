@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,15 +29,18 @@ public class ZamowienieActivity extends Fragment {
     private Button button;
     private TextView textView3;
     private TextView textview_first;
+    ListView produktywKoszyku;  //
     View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //FloatingActionButton fab = binding.fab;
-        //binding = FragmentNewOrderBinding.inflate(inflater, container, false);
-//        View root = binding.getRoot();
+
         view = inflater.inflate(R.layout.fragment_new_order2, container, false);
+
+        produktywKoszyku = (ListView) view.findViewById(R.id.lista_koszyk);
+        produktywKoszyku.setAdapter(new ListaAdapter(this.getContext(), Koszyk.PobierzKoszyk()));
+
         editTextTextPersonName2 = (EditText) view.findViewById(R.id.editTextTextPersonName2);
         editTextTextPersonName3 = (EditText) view.findViewById(R.id.editTextTextPersonName3);
         editTextTextPersonName4 = (EditText) view.findViewById(R.id.editTextTextPersonName4);

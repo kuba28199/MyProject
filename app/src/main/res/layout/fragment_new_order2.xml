@@ -14,29 +14,44 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
+        <RelativeLayout
+            android:id="@+id/koszyk"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp">
+
+            <ListView
+                android:id="@+id/lista_koszyk"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/produkt_w_koszyku"/>
+        </RelativeLayout>
+
         <EditText
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Imie  (opcjonalnie)"
             android:inputType="textPersonName"
-            android:hint="Imie  (opcjonalnie)" />
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Nazwisko  (opcjonalnie)"
             android:inputType="textPersonName"
-            android:hint="Nazwisko  (opcjonalnie)" />
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Numer  (opcjonalnie)"
             android:inputType="textPersonName"
-            android:hint="Numer  (opcjonalnie)" />
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/button87"
@@ -46,11 +61,10 @@
             android:backgroundTint="@color/orange"
             android:layout_gravity="center"
             android:layout_marginTop="150sp"
+            tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="152dp"
-            tools:layout_editor_absoluteY="394dp"
-            tools:ignore="MissingConstraints" />
+            tools:layout_editor_absoluteY="394dp" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
