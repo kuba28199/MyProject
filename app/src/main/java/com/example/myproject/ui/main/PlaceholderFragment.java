@@ -18,12 +18,14 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myproject.Koszyk;
 import com.example.myproject.Produkt;
 import com.example.myproject.ProduktViewModel;
 import com.example.myproject.R;
 import com.example.myproject.databinding.FragmentNewOrderBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,7 +57,7 @@ public class PlaceholderFragment extends Fragment {
         //}
         //pageViewModel.setIndex(index);
         produktViewModel = ViewModelProviders.of(this).get(ProduktViewModel.class);
-
+       // koszyk = new Koszyk();
 
     }
 
@@ -91,14 +93,14 @@ public class PlaceholderFragment extends Fragment {
     private class ProductHolder extends RecyclerView.ViewHolder{
         private TextView productNameTextView;
         private TextView productPriceTextView;
-        //private TextView productOpisTextView;
-        //private Button addButton;
+        final Button addButton;
 
         public ProductHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.product_list_item, parent, false));
             View view = inflater.inflate(R.layout.product_list_item, parent, false);
             productNameTextView = itemView.findViewById(R.id.product_name);
             productPriceTextView = itemView.findViewById(R.id.product_price);
+
            // productOpisTextView = itemView.findViewById(R.id.product_opis);
             //addButton = itemView.findViewById(R.id.buttonDoKoszyka);
             /*itemView.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +115,9 @@ public class PlaceholderFragment extends Fragment {
                     //dodaj do koszyka
                 }
             });*/
+            addButton = itemView.findViewById(R.id.buttonDoKoszyka);
+            addButton.setEnabled(true);
+
         }
 
         public void bind(Produkt produkt){
@@ -125,6 +130,15 @@ public class PlaceholderFragment extends Fragment {
                     Snackbar.make(itemView.findViewById(R.id.card_view),getText(produkt.getOpis()), Snackbar.LENGTH_LONG).show();
                 }
             });*/
+            productPriceTextView.setText(Float.toString(produkt.getCena()));
+
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Koszyk.Add(produkt);
+                    addButton.setEnabled(false);
+                }
+            });
         }
     }
 
