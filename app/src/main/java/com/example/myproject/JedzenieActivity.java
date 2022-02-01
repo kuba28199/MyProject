@@ -175,6 +175,11 @@ public class JedzenieActivity extends Fragment {
                     zestaw = new Sok(new DużeFrytki(new Kanapka())); }
 
                 nowyzestaw.setText("Twój zestaw" + "\nSklad: " + zestaw.Opis() + "\nCena: " + zestaw.Cena() + "zł");
+                Produkt produkt = new Produkt();
+                produkt.setNazwa("Własny zestaw");
+                produkt.setCena(zestaw.Cena());
+                produkt.setOpis(zestaw.Opis());
+                Koszyk.Add(produkt);
             }
         });
     }

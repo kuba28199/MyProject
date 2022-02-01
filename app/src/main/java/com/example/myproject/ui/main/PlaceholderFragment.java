@@ -1,5 +1,6 @@
 package com.example.myproject.ui.main;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -120,9 +121,10 @@ public class PlaceholderFragment extends Fragment {
 
         }
 
+
         public void bind(Produkt produkt){
             productNameTextView.setText(produkt.getNazwa());
-            productPriceTextView.setText(Float.toString(produkt.getCena()) + "zł");
+            productPriceTextView.setText(produkt.getCena()+"zł");
            // productOpisTextView.setText(produkt.getOpis());
             /*itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -130,7 +132,6 @@ public class PlaceholderFragment extends Fragment {
                     Snackbar.make(itemView.findViewById(R.id.card_view),getText(produkt.getOpis()), Snackbar.LENGTH_LONG).show();
                 }
             });*/
-            productPriceTextView.setText(Float.toString(produkt.getCena()));
 
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override

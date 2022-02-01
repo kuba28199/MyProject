@@ -38,7 +38,7 @@ public class ListaAdapter extends ArrayAdapter<Produkt> {
         nameTextView.setText(lista.get(position).getNazwa());
 
         TextView priceTextView = (TextView) convertView.findViewById(R.id.price);
-        priceTextView.setText(Float.toString(produkt.getCena())+" zł.");
+        priceTextView.setText(Float.toString(produkt.getCena())+" zł");
 
         return convertView;
     }
