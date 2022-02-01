@@ -5,5 +5,5 @@ public class BuilderZamowienie {
     public String nazwisko;
     public int numer;
 
-    BuilderZamowienie Zamowienie = new Builder().setImie("Hello").setNazwisko("World").setNumer(1).build();
+    //BuilderZamowienie Zamowienie = new Builder().setImie("Hello").setNazwisko("World").setNumer(1).build();
 }

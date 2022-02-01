@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PlaceholderFragment extends Fragment {
+public class OrderPlaceholder extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -36,8 +36,8 @@ public class PlaceholderFragment extends Fragment {
     private FragmentNewOrderBinding binding;
     private ProduktViewModel produktViewModel;
 
-    public static PlaceholderFragment newInstance(int index) {
-        PlaceholderFragment fragment = new PlaceholderFragment();
+    public static OrderPlaceholder newInstance(int index) {
+        OrderPlaceholder fragment = new OrderPlaceholder();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
@@ -50,7 +50,7 @@ public class PlaceholderFragment extends Fragment {
         //pageViewModel = new ViewModelProvider(this).get(PageViewModel.class);
         //int index = 1;
         //if (getArguments() != null) {
-          //  index = getArguments().getInt(ARG_SECTION_NUMBER);
+        //  index = getArguments().getInt(ARG_SECTION_NUMBER);
         //}
         //pageViewModel.setIndex(index);
         produktViewModel = ViewModelProviders.of(this).get(ProduktViewModel.class);
@@ -69,13 +69,13 @@ public class PlaceholderFragment extends Fragment {
 
         RecyclerView recyclerView = binding.getRoot().findViewById(R.id.recycler_view);
         //recyclerView.findViewById(R.id.recycler_view);
-        final ProductAdapter adapter = new ProductAdapter();
+        final OrderAdapter adapter = new OrderAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        produktViewModel.findAll().observe(getViewLifecycleOwner(), new Observer<List<Produkt>>() {
+        produktViewModel.findAll().observe(getViewLifecycleOwner(), new Observer<List<Zamowienie>>() {
             @Override
-            public void onChanged(List<Produkt> produkts) {
-                adapter.setProdukty(produkts);
+            public void onChanged(List<Zamowienie> zamowienia) {
+                adapter.setOrder(zamowienia);
             }
         });
         return recyclerView;
@@ -87,54 +87,54 @@ public class PlaceholderFragment extends Fragment {
         binding = null;
     }
 
-    private class ProductHolder extends RecyclerView.ViewHolder{
-        private TextView productNameTextView;
-        private TextView productPriceTextView;
+    public class OrderHolder extends RecyclerView.ViewHolder{
+        private TextView orderNameTextView;
+        private TextView orderStatusTextView;
 
-        public ProductHolder(LayoutInflater inflater, ViewGroup parent){
-            super(inflater.inflate(R.layout.product_list_item, parent, false));
-            productNameTextView = itemView.findViewById(R.id.product_name);
-            productPriceTextView = itemView.findViewById(R.id.product_price);
+        public OrderHolder(LayoutInflater inflater, ViewGroup parent){
+            super(inflater.inflate(R.layout.order_list_item, parent, false));
+            orderNameTextView = itemView.findViewById(R.id.order_name);
+            orderStatusTextView = itemView.findViewById(R.id.order_status);
         }
 
-        public void bind(Produkt produkt){
-            productNameTextView.setText(produkt.getNazwa());
-            productPriceTextView.setText(Float.toString(produkt.getCena()));
+        public void bind(Zamowienie order){
+            orderNameTextView.setText(order.getIdentifier());
+            orderStatusTextView.setText(order.getStatus());
         }
     }
 
-    private class ProductAdapter extends RecyclerView.Adapter<ProductHolder>{
-        private List<Produkt> produkty;
+    private class OrderAdapter extends RecyclerView.Adapter<OrderHolder>{
+        private List<Zamowienie> zamowienia;
 
         @NonNull
         @Override
-        public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-            return new ProductHolder(getLayoutInflater(), parent);
+        public OrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+            return new OrderHolder(getLayoutInflater(), parent);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ProductHolder holder, int position){
-            if(produkty != null){
-                Produkt produkt = produkty.get(position);
-                holder.bind(produkt);
+        public void onBindViewHolder(@NonNull OrderHolder holder, int position){
+            if(zamowienia != null){
+                Zamowienie zamowienie = zamowienia.get(position);
+                holder.bind(zamowienie);
             }
             else{
-                Log.d("PlaceholderFragment", "no products");
+                Log.d("OrderPlaceholder", "brak zamowien");
             }
         }
 
         @Override
         public int getItemCount(){
-            if(produkty != null){
-                return produkty.size();
+            if(zamowienia != null){
+                return zamowienia.size();
             }
             else{
                 return 0;
             }
         }
 
-        void setProdukty(List<Produkt> produkty){
-            this.produkty = produkty;
+        void setOrder(List<Zamowienie> zmaowienia){
+            this.zamowienia = zamowienia;
             notifyDataSetChanged();
         }
     }

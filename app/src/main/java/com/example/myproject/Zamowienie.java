@@ -7,7 +7,7 @@ import java.lang.String;
 //budowanie zamówienia używając buildera
 //Zamowienie zamowienie = new Builder().setImie(imie).setNazwisko(nazwisko).setNumer(numer).build();
 
-public class Zamowienie {
+public class Zamowienie extends BuilderZamowienie{
     private Stan status = new Przyjęte();
     private ArrayList<Produkt> zamowienie;
     private String imie;

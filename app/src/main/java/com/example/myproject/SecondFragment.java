@@ -32,8 +32,15 @@ public class SecondFragment extends Fragment {
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                //NavHostFragment.findNavController(SecondFragment.this)
+                //        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                BuilderZamowienie ord1 = new Builder().setNumer(23).build();
+                BuilderZamowienie ord2 = new Builder().setNumer(33).build();
+                BuilderZamowienie ord3 = new Builder().setNumer(43).build();
+                KolejkaZamowien kolejka = new KolejkaZamowien().getInstance();
+                kolejka.addOrder(ord1);
+                //kolejka.addOrder(ord2);
+                //kolejka.addOrder(ord3);
             }
         });
     }
