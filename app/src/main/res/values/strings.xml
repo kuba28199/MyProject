@@ -14,6 +14,8 @@
     <string name="tab_text_1">Produkty</string>
     <string name="tab_text_2">Twój własny zestaw</string>
 
+    <string name="zamowiono">Twoje zamówienie zostało złożone</string>
+
     <string-array name="rodzaje_jedzenia">
         <item>Burger</item>
         <item>Kanapka</item>
