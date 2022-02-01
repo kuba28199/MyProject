@@ -57,9 +57,10 @@
             android:id="@+id/button87"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Złóż zamówienie"
+            android:backgroundTint="@color/orange"
             android:layout_gravity="center"
             android:layout_marginTop="150sp"
-            android:text="Złóż zamówienie"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="152dp"
             tools:layout_editor_absoluteY="394dp" />
